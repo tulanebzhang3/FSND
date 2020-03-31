@@ -1,7 +1,7 @@
 #----------------------------------------------------------------------------#
 # Imports
 #----------------------------------------------------------------------------#
-import datetime
+from _datetime import datetime
 import json
 import dateutil.parser
 import babel
@@ -492,11 +492,11 @@ def shows():
   for show in shows:
     data.append(({
     "venue_id": show.venue_id,
-    "venue_name": Venue.query.with_entities(Venue.name).filterby(id = show.venue_id).first()[0],
+    "venue_name": Venue.query.with_entities(Venue.name).filter_by(id = show.venue_id).first()[0],
     "artist_id": show.artist_id,
-    "artist_name": Artist.query.with_entities(Artist.name).filterby(id = show.artist_id).first()[0],
-    "artist_image_link": Artist.query.with_entities(Artist.image_link).filterby(id = show.artist_id).first()[0],
-    "start_time": str(show.start_time)
+    "artist_name": Artist.query.with_entities(Artist.name).filter_by(id = show.artist_id).first()[0],
+    "artist_image_link": Artist.query.with_entities(Artist.image_link).filter_by(id = show.artist_id).first()[0],
+    "start_time":  format_datetime(str(show.start_time))
     }))
   # displays list of shows at /shows
   # TODO: replace with real venues data.
