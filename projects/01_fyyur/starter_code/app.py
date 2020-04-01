@@ -1,7 +1,7 @@
 #----------------------------------------------------------------------------#
 # Imports
 #----------------------------------------------------------------------------#
-from _datetime import datetime
+from datetime import datetime
 import json
 import dateutil.parser
 import babel
@@ -78,15 +78,16 @@ class Show(db.Model):
 # Filters.
 #----------------------------------------------------------------------------#
 
-def format_datetime(value, format='medium'):
-  date = dateutil.parser.parse(value)
-  if format == 'full':
-      format="EEEE MMMM, d, y 'at' h:mma"
-  elif format == 'medium':
-      format="EE MM, dd, y h:mma"
-  return babel.dates.format_datetime(date, format)
-
-app.jinja_env.filters['datetime'] = format_datetime
+# def format_datetime(value, format='medium'):
+#   date = dateutil.parser.parse(value)
+#   if format == 'full':
+#     format = "EEEE MMMM, d, y 'at' h:mma"
+#   elif format == 'medium':
+#     format = "EE MM, dd, y h:mma"
+#   return babel.dates.format_datetime(date, format)
+#
+#
+# app.jinja_env.filters['datetime'] = format_datetime
 
 
 def upComingShows(shows):
@@ -109,7 +110,7 @@ def pastShows(shows):
         "artist_id" : show.artist_id,
         "artist_name" : Artist.query.filter_by(id = show.artist_id).first().name,
         "artist_image_link" : Artist.query.filter_by(id = show.artist_id).first().image_link,
-        "start_time" : str(show.start_time)
+        "start_time" :str(show.start_time)
       })
   return result
 
@@ -496,7 +497,7 @@ def shows():
     "artist_id": show.artist_id,
     "artist_name": Artist.query.with_entities(Artist.name).filter_by(id = show.artist_id).first()[0],
     "artist_image_link": Artist.query.with_entities(Artist.image_link).filter_by(id = show.artist_id).first()[0],
-    "start_time":  format_datetime(str(show.start_time))
+    "start_time":  str(show.start_time)
     }))
   # displays list of shows at /shows
   # TODO: replace with real venues data.

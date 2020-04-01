@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b35cff48-981e-46eb-a8b6-2bf9e370196f" name="Default Changelist" comment="" />
+    <list default="true" id="b35cff48-981e-46eb-a8b6-2bf9e370196f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/01_fyyur/starter_code/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/projects/01_fyyur/starter_code/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/01_fyyur/starter_code/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/projects/01_fyyur/starter_code/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/01_fyyur/starter_code/templates/pages/show_artist.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects/01_fyyur/starter_code/templates/pages/show_artist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/01_fyyur/starter_code/templates/pages/show_venue.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects/01_fyyur/starter_code/templates/pages/show_venue.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/01_fyyur/starter_code/templates/pages/shows.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects/01_fyyur/starter_code/templates/pages/shows.html" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,7 +26,13 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/projects/01_fyyur/starter_code" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\FSND\projects\01_fyyur\starter_code" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -37,12 +51,25 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5b5c01fc-6f38-436c-93bb-f14b4c2ce813" name="Default Changelist" comment="" />
+      <changelist id="b35cff48-981e-46eb-a8b6-2bf9e370196f" name="Default Changelist" comment="" />
       <created>1585582345892</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1585582345892</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
