@@ -81,8 +81,15 @@
     </div>
 </section>
 <div class="container">
-    <a class="btn btn-warning" href="/venue/{{venue.id}}/edit">Edit venue</a>
+    <a class="btn btn-warning" href="/venues/{{venue.id}}/edit">Edit venue</a>
+    <button class="btn btn-warning" onclick = deleteVenue({{venue.id}})>Delete venue</button>
 </div>
-
+<script>
+    deleteVenue = id => {
+    return fetch('/venues/'+id, {
+    method: 'DELETE'
+    }).then(()=>window.location = '/venues')
+    }
+</script>
 {% endblock %}
 

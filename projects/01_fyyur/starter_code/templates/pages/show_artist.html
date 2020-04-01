@@ -74,7 +74,15 @@
 
 <div class="container">
 		<a class="btn btn-warning" href="/artists/{{artist.id}}/edit">Edit artist</a>
+	<bottom class="btn btn-warning" onclick=deleteArtist({{artist.id}})>Delete artist</bottom>
 	</div>
+<script>
+	deleteArtist = id => {
+	fetch('/artists/' + id,{
+	method: "DELETE"}).then(() => window.location = '/artists')
+
+	}
+</script>
 
 {% endblock %}
 
