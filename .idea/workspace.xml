@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projects/02_trivia_api/starter/backend/flaskr/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/projects/02_trivia_api/starter/backend/flaskr/__init__.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,18 +28,6 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\FSND\projects\01_fyyur\starter_code" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -67,5 +54,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="655" y="274" key="com.intellij.ide.util.TipDialog" timestamp="1585921488694">
+      <screen x="0" y="0" width="1919" height="899" />
+    </state>
+    <state x="655" y="274" key="com.intellij.ide.util.TipDialog/0.0.1919.899@0.0.1919.899" timestamp="1585921488694" />
   </component>
 </project>
