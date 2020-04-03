@@ -50,6 +50,7 @@ def create_app(test_config=None):
     for category in categories:
       show_categories[category.id] = category.type
     return jsonify({
+      "success" : True,
       "categories" : show_categories
     })
 
@@ -66,6 +67,24 @@ def create_app(test_config=None):
   ten questions per page and pagination at the bottom of the screen for three pages.
   Clicking on the page numbers should update the questions. 
   '''
+  @app.route('/questions')
+  def get_questions():
+    questions = Question.query.all()
+    num_of_question = len(questions)
+    questions_for_page = pagination(request, questions)
+    categories = Category.query.all()
+    if len(categories) == 0:
+      abort(404)
+    show_categories = {}
+    for category in categories:
+      show_categories[category.id] = category.type
+    return jsonify({
+      "success": True,
+      "questions" : questions_for_page,
+      'total_questions' : num_of_question,
+      "categories" : show_categories
+    })
+
 
   '''
   @TODO: 
@@ -74,6 +93,21 @@ def create_app(test_config=None):
   TEST: When you click the trash icon next to a question, the question will be removed.
   This removal will persist in the database and when you refresh the page. 
   '''
+  @app.route('/questions/<int:question_id>',  methods = ["DELETE"])
+  def delete_question(question_id):
+    try:
+      question = Question.query.filter_by(id = question_id).one_or_none()
+      if question is None:
+        abort(404)
+      else:
+        question.delete()
+      return jsonify({
+        "success" :True,
+        "delete" : question_id
+      })
+    except:
+      abort(422)
+
 
   '''
   @TODO: 
