@@ -48,7 +48,7 @@ class TriviaTestCase(unittest.TestCase):
         self.assertTrue(data['categories'])
         self.assertTrue(len(data['questions']))
 
-    def test_get_paginated_questions_out_of_range(self):
+    def test_404_get_paginated_questions_out_of_range(self):
         response = self.client().get('/questions?page=1000')
         data = json.loads(response.data)
 
@@ -57,18 +57,90 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data["message"], "Page not found")
 
     def test_delete_question(self):
-        response = self.client().delete('/questions/9')
+        response = self.client().delete('/questions/29')
         data = json.loads(response.data)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data['success'], True)
-        self.assertEqual(data['delete'], 9)
+        self.assertEqual(data['delete'], 29)
 
-    def test_delete_question(self):
+    def test_404_delete_question(self):
         response = self.client().delete('/questions/1')
         data = json.loads(response.data)
-        self.assertEqual(response.status_code, 422)
+        self.assertEqual(response.status_code, 404)
         self.assertEqual(data['success'], False)
-        self.assertEqual(data['message'], 'not valid operation')
+        self.assertEqual(data['message'], 'Page not found')
+
+    def test_post_new_question(self):
+        post_data = {
+            'question': 'what is your name',
+            'answer': 'Alice',
+            'difficulty': 1,
+            'category': 1
+        }
+        response = self.client().post('/questions', json=post_data)
+        data = json.loads(response.data)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(data["success"], True)
+        self.assertEqual(data["question_created"], 'what is your name')
+        self.assertTrue(data["total_questions"])
+        self.assertTrue(data["questions"])
+        self.assertTrue(data["created"])
+
+    def test_422_post_new_question(self):
+        post_data = {
+
+        }
+        response = self.client().post('/questions', json=post_data)
+        data = json.loads(response.data)
+
+        self.assertEqual(response.status_code, 422)
+        self.assertEqual(data["success"], False)
+        self.assertEqual(data["message"], 'not valid operation')
+
+    def test_search_questions(self):
+        post_data = {
+            'searchTerm': 'a',
+        }
+        res = self.client().post('/questions', json=post_data)
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(data["success"], True)
+        self.assertTrue(data["total_questions"])
+        self.assertTrue(data["question"])
+
+
+    def test_404_search_questions(self):
+        post_data = {
+            'searchTerm': 'abcdefghijklmnopqrst',
+        }
+        res = self.client().post('/questions', json=post_data)
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 404)
+        self.assertEqual(data["success"], False)
+        self.assertEqual(data['message'], 'Page not found')
+
+    def test_question_by_category(self):
+        res = self.client().get('/categories/1/questions?page=1')
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(data["success"], True)
+        self.assertTrue(data["questions"])
+        self.assertTrue(data["total_questions"])
+        self.assertTrue(len(data["current_category"]))
+
+    def test_404_question_by_category(self):
+        res = self.client().get('/categories/1/questions?page=1000')
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 404)
+        self.assertEqual(data["success"], False)
+        self.assertEqual(data['message'], 'Page not found')
+
+
 
 # Make the tests conveniently executable
 if __name__ == "__main__":

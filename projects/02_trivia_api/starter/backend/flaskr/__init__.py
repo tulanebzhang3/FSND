@@ -106,7 +106,7 @@ def create_app(test_config=None):
         "delete": question_id
       })
     except:
-      abort(422)
+      abort(404)
 
   '''
   @TODO: 
@@ -130,7 +130,7 @@ def create_app(test_config=None):
       else:
         pagedResult = pagination(request, searchResult)
         return  jsonify({
-          'sucess' : True,
+          'success' : True,
           'question' : pagedResult,
           'total_questions': len(Question.query.all())
         })
@@ -183,12 +183,14 @@ def create_app(test_config=None):
   category to be shown. 
   '''
   @app.route('/categories/<int:id>/questions')
-  def get_questions_by_categories():
+  def get_questions_by_categories(id):
     category = Category.query.filter_by(id = id).one_or_none()
     if category is None:
-      abort(400)
+      abort(404)
     question_list = Question.query.filter_by(category= category.id).all()
     pagedQuestionList = pagination(request,question_list)
+    if len(pagedQuestionList) ==0:
+      abort(404)
     return jsonify({
       "success" : True,
       "questions" : pagedQuestionList,
@@ -244,13 +246,7 @@ def create_app(test_config=None):
       "message": "not valid operation"
     }), 422
 
-  @app.errorhandler(400)
-  def bad_request(error):
-    return jsonify({
-      "success": False,
-      "error": 400,
-      "message": "bad request"
-    }), 400
+
   return app
 
     
