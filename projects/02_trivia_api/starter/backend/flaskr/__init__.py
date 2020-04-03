@@ -49,6 +49,7 @@ def create_app(test_config=None):
     show_categories = [category.format() for category in categories]
 
     return jsonify({
+      "success": True,
       "categories" : show_categories
     })
 
@@ -65,7 +66,7 @@ def create_app(test_config=None):
   ten questions per page and pagination at the bottom of the screen for three pages.
   Clicking on the page numbers should update the questions. 
   '''
-<<<<<<< HEAD
+
   @app.route('/questions')
   def get_questions():
     questions = Question.query.order_by(Question.id).all()
@@ -82,9 +83,6 @@ def create_app(test_config=None):
       "categories" : show_categories
     })
 
-=======
->>>>>>> parent of 06d956f0... add delete question
-
   '''
   @TODO: 
   Create an endpoint to DELETE question using a question ID. 
@@ -92,6 +90,23 @@ def create_app(test_config=None):
   TEST: When you click the trash icon next to a question, the question will be removed.
   This removal will persist in the database and when you refresh the page. 
   '''
+
+
+
+  @app.route('/questions/<int:question_id>', methods=["DELETE"])
+  def delete_question(question_id):
+    try:
+      question = Question.query.filter(Question.id ==question_id).one_or_none()
+      if question is None:
+        abort(404)
+      else:
+        question.delete()
+      return jsonify({
+        "success": True,
+        "delete": question_id
+      })
+    except:
+      abort(422)
 
   '''
   @TODO: 
@@ -226,7 +241,7 @@ def create_app(test_config=None):
     return jsonify({
       "success": False,
       "error": 422,
-      "message": "unprocessable"
+      "message": "not valid operation"
     }), 422
 
   @app.errorhandler(400)

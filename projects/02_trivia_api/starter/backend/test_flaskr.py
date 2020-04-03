@@ -57,11 +57,18 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data["message"], "Page not found")
 
     def test_delete_question(self):
-        response = self.client().delete('/questions/5')
+        response = self.client().delete('/questions/9')
         data = json.loads(response.data)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data['success'], True)
-        self.assertEqual(data['delete'], 5)
+        self.assertEqual(data['delete'], 9)
+
+    def test_delete_question(self):
+        response = self.client().delete('/questions/1')
+        data = json.loads(response.data)
+        self.assertEqual(response.status_code, 422)
+        self.assertEqual(data['success'], False)
+        self.assertEqual(data['message'], 'not valid operation')
 
 # Make the tests conveniently executable
 if __name__ == "__main__":
