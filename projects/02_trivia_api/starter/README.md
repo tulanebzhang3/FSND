@@ -290,7 +290,9 @@ Sample: curl http://127.0.0.1:5000/questions/6 -X DELETE
 #### POST /questions
 
 Creates a new question based on a payload.
-request body: {
+request body:
+```
+{
 
 question: question
 
@@ -300,6 +302,7 @@ category:category
 
 difficulty: difficulty
 }
+```
 
 response body
 ```
@@ -317,10 +320,13 @@ response body
 #### POST /questions
 
 search a question accoring to user input.
-request body: {
+request body:
+```
+{
 
 serach: serachTerm
 }
+```
 
 response body
 ```
@@ -397,4 +403,9 @@ return {
 ```
 
 
+### Authors
+
+Boyu Zhang worked on the API
+
+Udacity provided the starter files
 

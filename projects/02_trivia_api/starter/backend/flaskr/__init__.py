@@ -103,7 +103,7 @@ def create_app(test_config=None):
         question.delete()
       return jsonify({
         "success": True,
-        "delete": question_id
+        "deleted": question_id
       })
     except:
       abort(404)
@@ -125,14 +125,14 @@ def create_app(test_config=None):
     if(search):
       search = "%" + search +"%"
       searchResult =  Question.query.filter(Question.question.ilike(search)).all()
-      if(len(searchResult) == 0):
+      if (len(searchResult) == 0):
         abort(404)
       else:
         pagedResult = pagination(request, searchResult)
         return  jsonify({
           'success' : True,
           'question' : pagedResult,
-          'total_questions': len(Question.query.all())
+          'total_questions': len(searchResult)
         })
     else:
       question = body.get('question')
@@ -156,7 +156,8 @@ def create_app(test_config=None):
           'created' : question.id,
           'question_created': question.question,
           'questions': pagedQuestions,
-          'total_questions': len(Question.query.all())
+          'total_questions': len(Question.query.all()),
+          'question': question.format()
 
         })
       except:
@@ -194,8 +195,8 @@ def create_app(test_config=None):
     return jsonify({
       "success" : True,
       "questions" : pagedQuestionList,
-      'total_questions': len(Question.query.all()),
-      'current_category': category.type
+      'total_questions': len(question_list),
+      'current_category': id
     })
 
   '''

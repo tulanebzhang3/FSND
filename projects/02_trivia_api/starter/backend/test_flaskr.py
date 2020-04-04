@@ -57,11 +57,11 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data["message"], "Page not found")
 
     def test_delete_question(self):
-        response = self.client().delete('/questions/27')
+        response = self.client().delete('/questions/29')
         data = json.loads(response.data)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data['success'], True)
-        self.assertEqual(data['delete'], 27)
+        self.assertEqual(data['deleted'], 29)
 
     def test_404_delete_question(self):
         response = self.client().delete('/questions/99999')
@@ -130,7 +130,7 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data["success"], True)
         self.assertTrue(data["questions"])
         self.assertTrue(data["total_questions"])
-        self.assertTrue(len(data["current_category"]))
+
 
     def test_404_question_by_category(self):
         response = self.client().get('/categories/1/questions?page=1000')
