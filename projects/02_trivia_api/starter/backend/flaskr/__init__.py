@@ -216,12 +216,28 @@ def create_app(test_config=None):
     quiz_category = body.get('quiz_category')
     previous_questions = body.get('previous_questions')
     if ((quiz_category is None) or (previous_questions is None)):
-      abort(400)
+      abort(404)
+
     if(quiz_category['id'] == 0):
       questions = Question.query.all()
     else:
-      questions = Question.query.filter_by(category=quiz_category['id']).all()
+       questions = Question.query.filter_by(category=quiz_category['id']).all()
+    if len(previous_questions) == len(questions):
+      return jsonify({
+        'success' : True
+      })
     question = questions[random.randrange(0, len(questions), 1)]
+    is_used_question = True
+    while is_used_question:
+      if question.id in previous_questions:
+        question = questions[random.randrange(0, len(questions), 1)]
+      else:
+        is_used_question = False
+    return jsonify({
+      'success' :True,
+      'question' : question.format()
+
+    })
 
 
   '''
