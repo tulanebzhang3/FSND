@@ -105,21 +105,296 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser. T
 npm start
 ```
 
-## Request Formatting
 
-The frontend should be fairly straightforward and disgestible. You'll primarily work within the ```components``` folder in order to edit the endpoints utilized by the components. While working on your backend request handling and response formatting, you can reference the frontend to view how it parses the responses.
+## API Reference
 
-After you complete your endpoints, ensure you return to and update the frontend to make request and handle responses appropriately:
-- Correct endpoints
-- Update response body handling
+### Getting Started
 
-## Optional: Styling
+Backend Base URL: http://127.0.0.1:5000/
+Frontend Base URL: http://127.0.0.1:3000/
 
-In addition, you may want to customize and style the frontend by editing the CSS in the ```stylesheets``` folder.
+### Error Handling
 
-## Optional: Game Play Mechanics
+The error codes currently returned are:
 
-Currently, when a user plays the game they play up to five questions of the chosen category. If there are fewer than five questions in a category, the game will end when there are no more questions in that category.
+400 – bad request
+404 – Page not found
+422 – not valid operation
 
-You can optionally update this game play to increase the number of questions or whatever other game mechanics you decide. Make sure to specify the new mechanics of the game in the README of the repo you submit so the reviewers are aware that the behavior is correct.
+### Endpoints
+
+#### GET /categories
+
+
+Returns all the categories as an object with a string key, category value.
+Sample: curl http://127.0.0.1:5000/categories
+
+```
+{
+  "categories": [
+    {
+      "id": 1,
+      "type": "Science"
+    },
+    {
+      "id": 2,
+      "type": "Art"
+    },
+    {
+      "id": 3,
+      "type": "Geography"
+    },
+    {
+      "id": 4,
+      "type": "History"
+    },
+    {
+      "id": 5,
+      "type": "Entertainment"
+    },
+    {
+      "id": 6,
+      "type": "Sports"
+    }
+  ],
+  "success": true
+}
+```
+
+#### GET /questions
+
+
+Returns all questions which were paginated.
+
+Sample: curl http://127.0.0.1:5000/questions
+
+```
+{
+  "categories": [
+    {
+      "id": 1,
+      "type": "Science"
+    },
+    {
+      "id": 2,
+      "type": "Art"
+    },
+    {
+      "id": 3,
+      "type": "Geography"
+    },
+    {
+      "id": 4,
+      "type": "History"
+    },
+    {
+      "id": 5,
+      "type": "Entertainment"
+    },
+    {
+      "id": 6,
+      "type": "Sports"
+    }
+  ],
+  "questions": [
+    {
+      "answer": "Apollo 13",
+      "category": 5,
+      "difficulty": 4,
+      "id": 2,
+      "question": "What movie earned Tom Hanks his third straight Oscar nomination, in 1996?"
+    },
+    {
+      "answer": "Tom Cruise",
+      "category": 5,
+      "difficulty": 4,
+      "id": 4,
+      "question": "What actor did author Anne Rice first denounce, then praise in the role of her beloved Lestat?"
+    },
+    {
+      "answer": "Maya Angelou",
+      "category": 4,
+      "difficulty": 2,
+      "id": 5,
+      "question": "Whose autobiography is entitled 'I Know Why the Caged Bird Sings'?"
+    },
+    {
+      "answer": "Edward Scissorhands",
+      "category": 5,
+      "difficulty": 3,
+      "id": 6,
+      "question": "What was the title of the 1990 fantasy directed by Tim Burton about a young man with multi-bladed appendages?"
+    },
+    {
+      "answer": "Muhammad Ali",
+      "category": 4,
+      "difficulty": 1,
+      "id": 9,
+      "question": "What boxer's original name is Cassius Clay?"
+    },
+    {
+      "answer": "Brazil",
+      "category": 6,
+      "difficulty": 3,
+      "id": 10,
+      "question": "Which is the only team to play in every soccer World Cup tournament?"
+    },
+    {
+      "answer": "Uruguay",
+      "category": 6,
+      "difficulty": 4,
+      "id": 11,
+      "question": "Which country won the first ever soccer World Cup in 1930?"
+    },
+    {
+      "answer": "George Washington Carver",
+      "category": 4,
+      "difficulty": 2,
+      "id": 12,
+      "question": "Who invented Peanut Butter?"
+    },
+    {
+      "answer": "Lake Victoria",
+      "category": 3,
+      "difficulty": 2,
+      "id": 13,
+      "question": "What is the largest lake in Africa?"
+    },
+    {
+      "answer": "The Palace of Versailles",
+      "category": 3,
+      "difficulty": 3,
+      "id": 14,
+      "question": "In which royal palace would you find the Hall of Mirrors?"
+    }
+  ],
+  "success": true,
+  "total_questions": 23
+}
+```
+
+
+#### DELETE /questions/int:id\
+
+
+Deletes a question by id .
+Sample: curl http://127.0.0.1:5000/questions/6 -X DELETE
+
+```
+{
+  "delete": 6,
+  "success": true
+}
+```
+
+#### POST /questions
+
+Creates a new question based on a payload.
+request body: {
+
+question: question
+
+answer: answer
+
+category:category
+
+difficulty: difficulty
+}
+
+response body
+```
+{
+  "question": {
+    "id": 1,
+    "question": "question",
+    "answer": "answer",
+    "category": 1,
+    "difficulty": 1
+  }
+}
+```
+
+#### POST /questions
+
+search a question accoring to user input.
+request body: {
+
+serach: serachTerm
+}
+
+response body
+```
+{
+  "question": {
+    "id": 1,
+    "question": "question",
+    "answer": "answer",
+    "category": 1,
+    "difficulty": 1
+  }
+}
+```
+
+
+#### GET /categories/int:id\/questions
+
+Get questions by using id
+
+Sample: curl http://127.0.0.1:5000/categories/2/questions
+
+response body
+```
+{
+  "current_category": "Art",
+  "questions": [
+    {
+      "answer": "Escher",
+      "category": 2,
+      "difficulty": 1,
+      "id": 16,
+      "question": "Which Dutch graphic artist\u2013initials M C was a creator of optical illusions?"
+    },
+    {
+      "answer": "Mona Lisa",
+      "category": 2,
+      "difficulty": 3,
+      "id": 17,
+      "question": "La Giaconda is better known as what?"
+    },
+    {
+      "answer": "One",
+      "category": 2,
+      "difficulty": 4,
+      "id": 18,
+      "question": "How many paintings did Van Gogh sell in his lifetime?"
+    },
+    {
+      "answer": "Jackson Pollock",
+      "category": 2,
+      "difficulty": 2,
+      "id": 19,
+      "question": "Which American artist was a pioneer of Abstract Expressionism, and a leading exponent of action painting?"
+    }
+  ],
+  "success": true,
+  "total_questions": 22
+}
+```
+
+#### POST /quizzes
+
+get all questions to paly quiz in one category
+request body : quiz_category and previous_questions.
+response :
+```
+return {
+      'id': question.id,
+      'question': question.question,
+      'answer': question.answer,
+      'category': question.category,
+      'difficulty': question.difficulty
+    }
+```
+
+
 
