@@ -46,11 +46,13 @@ def create_app(test_config=None):
     categories = Category.query.order_by(Category.id).all()
     if len(categories) == 0:
       abort(404)
-    show_categories = [category.format() for category in categories]
+    categories_dict = {}
+    for category in categories:
+      categories_dict[category.id] = category.type
 
     return jsonify({
       "success": True,
-      "categories" : show_categories
+      "categories" : categories_dict
     })
 
 
@@ -75,12 +77,16 @@ def create_app(test_config=None):
     if len(questions_for_page) == 0:
       abort(404)
     categories = Category.query.order_by(Category.id).all()
-    show_categories = [category.format() for category in categories]
+    categories_dict = {}
+    for category in categories:
+      categories_dict[category.id] = category.type
+
     return jsonify({
       "success": True,
       "questions" : questions_for_page,
       'total_questions' : num_of_question,
-      "categories" : show_categories
+      "categories" : categories_dict,
+      'current_category' : None
     })
 
   '''
@@ -131,7 +137,7 @@ def create_app(test_config=None):
         pagedResult = pagination(request, searchResult)
         return  jsonify({
           'success' : True,
-          'question' : pagedResult,
+          'questions' : pagedResult,
           'total_questions': len(searchResult)
         })
     else:
