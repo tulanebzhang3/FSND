@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b35cff48-981e-46eb-a8b6-2bf9e370196f" name="Default Changelist" comment="" />
+    <list default="true" id="b35cff48-981e-46eb-a8b6-2bf9e370196f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/03_coffee_shop_full_stack/starter_code/backend/src/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/projects/03_coffee_shop_full_stack/starter_code/backend/src/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/03_coffee_shop_full_stack/starter_code/backend/src/auth/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/projects/03_coffee_shop_full_stack/starter_code/backend/src/auth/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/03_coffee_shop_full_stack/starter_code/frontend/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/03_coffee_shop_full_stack/starter_code/frontend/src/environments/environment.ts" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
