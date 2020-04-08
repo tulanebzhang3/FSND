@@ -5,9 +5,9 @@ from jose import jwt
 from urllib.request import urlopen
 
 
-AUTH0_DOMAIN = 'manish-udacity.auth0.com'
+AUTH0_DOMAIN = 'dev-54hg6pgw.auth0.com'
 ALGORITHMS = ['RS256']
-API_AUDIENCE = 'Coffee Shop Full Stack'
+API_AUDIENCE = 'http://127.0.0.1:5000'
 
 ## AuthError Exception
 '''
