@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b35cff48-981e-46eb-a8b6-2bf9e370196f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/03_coffee_shop_full_stack/starter_code/backend/src/auth/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/projects/03_coffee_shop_full_stack/starter_code/backend/src/auth/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/03_coffee_shop_full_stack/starter_code/backend/udacity-fsnd-udaspicelatte.postman_collection.json" beforeDir="false" afterPath="$PROJECT_DIR$/projects/03_coffee_shop_full_stack/starter_code/backend/udacity-fsnd-udaspicelatte.postman_collection.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/03_coffee_shop_full_stack/starter_code/frontend/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/03_coffee_shop_full_stack/starter_code/frontend/src/environments/environment.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +21,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/projects/01_fyyur/starter_code" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
